@@ -51,7 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FloatObject.cs" />
+     <Compile Include="Assets\battleship_tactic_script.cs" />
+     <Compile Include="Assets\listener.cs" />
+     <Compile Include="Assets\rocket_listener.cs" />
+     <Compile Include="Assets\rocket_movement_script.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
