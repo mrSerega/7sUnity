@@ -21,7 +21,7 @@ public class battleship_tactic_script : MonoBehaviour {
     public Transform tr;
     public Collider cl;
 
-    private float last_time = Time.time;
+    private float last_time = 0;
 
     // Use this for initialization
     void Start () {
@@ -33,14 +33,22 @@ public class battleship_tactic_script : MonoBehaviour {
     void Update()
     {
         float cur_time = Time.time;
-        if (cur_time - last_time > 10)
+        if (cur_time - last_time > 2)
         {
             last_time = cur_time;
-            GameObject obj = Instantiate(rocket_prefab) as GameObject;
+            launch();
         }
         //Debug.Log("battle ship move");
-        //tr.Translate(speed_x * time_step, speed_y * time_step, speed_z * time_step);
-        //tr.Rotate(angle_x, angle_y, angle_z);
-        Debug.Log(cur_time - last_time);
+        tr.Translate(speed_x * time_step, speed_y * time_step, speed_z * time_step);
+        tr.Rotate(angle_x, angle_y, angle_z);
+        //Debug.Log(cur_time - last_time);
+    }
+
+    private void launch()
+    {
+        GameObject obj = Instantiate(rocket_prefab) as GameObject;
+        obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+        obj.transform.Translate(0, 2, 0);
+        obj.transform.Rotate(0, tr.localRotation.eulerAngles.y+90, 0);
     }
 }

@@ -12,7 +12,7 @@ public class rocket_movement_script : MonoBehaviour {
 
     public float speed_x = 0.0f;
     public float speed_y = 0.0f;
-    public float speed_z = 1.0f;
+    public float speed_z = 20.0f;
 
     public float angle_x = 0.0f;
     public float angle_y = 0.0f;
@@ -28,6 +28,7 @@ public class rocket_movement_script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         tr.Translate(speed_x*time_step, speed_y*time_step, speed_z*time_step);
+        if(tr.position.y>0) tr.Translate(0, -0.05f, 0);
         if (Time.time >= ttl){
             Destroy(this.gameObject);
         }
