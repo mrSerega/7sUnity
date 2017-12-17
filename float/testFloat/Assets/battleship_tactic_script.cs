@@ -59,18 +59,31 @@ public class battleship_tactic_script : MonoBehaviour {
 	{
 		if (isOnPlace()) return;
 		Vector3 destination_vector = current_destination - tr.position;
-		double wish_angle = Mathf.Atan2(destination_vector.z, destination_vector.x);
-		double cur_angle = tr.rotation.y;
+		float wish_angle = Mathf.Rad2Deg * Mathf.Atan2(destination_vector.z, destination_vector.x);
+		float cur_angle = -tr.rotation.eulerAngles.y;
+		if (cur_angle > 180) cur_angle -= 360;
+		if (wish_angle > 180) wish_angle -= 360;
+		if (cur_angle < -180) cur_angle += 360;
+		if (wish_angle < -180) wish_angle += 360;
 
+
+		//Debug.Log(destination_vector);
 		Debug.Log(cur_angle);
 		Debug.Log(wish_angle);
 		Debug.Log("###");
+
+		if (Mathf.Abs(wish_angle - cur_angle) > 170)
+		{
+			tr.Rotate(angle_x, angle_y, angle_z);
+			tr.Translate(speed_x * time_step, speed_y * time_step, speed_z * time_step);
+			return;
+		}
 
 		if (cur_angle > wish_angle)
 		{
 			tr.Rotate(angle_x, angle_y, angle_z);
 		}
-		if (cur_angle <= wish_angle)
+		if (cur_angle < wish_angle)
 		{
 			tr.Rotate(angle_x, -angle_y, angle_z);
 		}

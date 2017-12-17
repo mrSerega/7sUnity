@@ -312,22 +312,31 @@ Prefab:
     - target: {fileID: 114817075583751260, guid: d50b0d0039a216a49943daa7d125f716,
         type: 2}
       propertyPath: current_destination.z
-      value: 40
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 114817075583751260, guid: d50b0d0039a216a49943daa7d125f716,
         type: 2}
       propertyPath: speed_x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114817075583751260, guid: d50b0d0039a216a49943daa7d125f716,
         type: 2}
       propertyPath: angle_y
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 114817075583751260, guid: d50b0d0039a216a49943daa7d125f716,
         type: 2}
       propertyPath: eps
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114817075583751260, guid: d50b0d0039a216a49943daa7d125f716,
+        type: 2}
+      propertyPath: angle_eps
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730141391337062, guid: d50b0d0039a216a49943daa7d125f716, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d50b0d0039a216a49943daa7d125f716, type: 2}
