@@ -25,18 +25,41 @@ public class battleship_tactic_script : MonoBehaviour {
 
     private float last_time = 0;
 
+	public List<string> pre_commands;
+	private List<List<int>> commands;
+	private int com_counter = 0;
+
 	public Vector3 current_destination;
 
     // Use this for initialization
-    void Start () {
+    private void Start () {
+		commands = new List<List<int>>();
         Debug.Log("battle ship init");
         last_time = Time.time;
+		parse_com();
+		Debug.Log(commands);
     }
+
+	private void parse_com()
+	{
+		foreach (string com in pre_commands)
+		{
+			string[] pcom = com.Split(' ');
+			List<int> tmp = new List<int>();
+			for (int i = 0; i < pcom.Length; ++i)
+			{
+				tmp.Add(int.Parse(pcom[i]));
+			}
+			Debug.Log("errror "+tmp);
+			commands.Add(tmp);
+		}
+	}
 
     // Update is called once per frame
     void Update()
     {
 		move();
+		mng();
         //float cur_time = Time.time;
         //if (cur_time - last_time > 2)
         //{
@@ -47,12 +70,64 @@ public class battleship_tactic_script : MonoBehaviour {
         //Debug.Log(cur_time - last_time);
     }
 
-    private void launch()
+	private void mng()
+	{
+		if(com_counter >= commands.Count)
+		{
+			Debug.Log("end of coms");
+			return;
+		}
+		float cur_time = Time.time;
+		Debug.Log("com_counter is " + commands.Count);
+		if(cur_time >= last_time + commands[com_counter][1])
+		{
+			switch (commands[com_counter][0]) {
+				case 0:
+					break;
+				case 1:
+					moveTo(new Vector3(commands[com_counter][2], 0, commands[com_counter][3]));
+					break;
+				case 2:
+					launch(0); //forward
+					break;
+				case 3:
+					launch(-1); //left
+					break;
+				case 4:
+					launch(1); //right
+					break;
+			}
+			com_counter++;
+			last_time = cur_time;
+		}
+
+	}
+
+    private void launch(int side)
     {
-        GameObject obj = Instantiate(rocket_prefab) as GameObject;
-        obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-        obj.transform.Translate(0, 2, 0);
-        obj.transform.Rotate(0, tr.localRotation.eulerAngles.y+90, 0);
+		GameObject obj;
+		switch (side)
+		{
+			case -1:
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Translate(0, 2, 0);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y, 0);
+				break;
+			case 0:
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Translate(0, 2, 0);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
+				break;
+			case 1:
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Translate(0, 2, 0);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 180, 0);
+				break;
+		}
+        
     }
 
 	private void move()
@@ -68,9 +143,9 @@ public class battleship_tactic_script : MonoBehaviour {
 
 
 		//Debug.Log(destination_vector);
-		Debug.Log(cur_angle);
-		Debug.Log(wish_angle);
-		Debug.Log("###");
+		//Debug.Log(cur_angle);
+		//Debug.Log(wish_angle);
+		//Debug.Log("###");
 
 		if (Mathf.Abs(wish_angle - cur_angle) > 170)
 		{
@@ -107,8 +182,9 @@ public class battleship_tactic_script : MonoBehaviour {
 		return;
 	} 
 
-	private void avoidHit(Vector3 let_cor)
+	public void avoidHit(Vector3 let_cor)
 	{
+		Debug.Log("hit");
 		return;
 	}
 

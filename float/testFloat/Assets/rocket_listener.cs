@@ -6,7 +6,10 @@ public class rocket_listener : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("rocket triger");
-        Destroy(this.gameObject);
+		if(other.GetType() == typeof(CapsuleCollider))
+		{
+			Debug.Log(other.GetType());
+			Destroy(this.gameObject);
+		}		
     }
 }

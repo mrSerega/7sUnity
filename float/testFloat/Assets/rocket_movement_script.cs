@@ -28,7 +28,7 @@ public class rocket_movement_script : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         tr.Translate(speed_x*time_step, speed_y*time_step, speed_z*time_step);
-        if(tr.position.y>0) tr.Translate(0, -0.05f, 0);
+        if(tr.position.y>0) tr.Translate(0, -0.3f, 0);
         if (Time.time >= ttl){
             Destroy(this.gameObject);
         }

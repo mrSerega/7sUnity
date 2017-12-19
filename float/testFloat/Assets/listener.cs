@@ -6,7 +6,16 @@ public class listener : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("battleship trigger");
-        this.GetComponent<Rigidbody>().useGravity = true;
-    }
+		//Debug.Log(other.GetType());
+		//if (other.GetType() == typeof(SphereCollider))
+		//{
+		//	Debug.Log("SEE!!!");
+		//}
+		if (other.GetType() == typeof(CapsuleCollider))
+		{
+			Debug.Log("battleship trigger");
+			this.GetComponent<Rigidbody>().useGravity = true;
+		}
+	}
+
 }

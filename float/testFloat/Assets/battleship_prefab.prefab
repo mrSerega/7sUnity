@@ -1528,14 +1528,13 @@ MonoBehaviour:
     type: 2}
   hp: 0
   time_step: 0.1
+  place_eps: 5
   speed_x: 1
-  speed_y: 0
-  speed_z: 0
-  angle_x: 0
   angle_y: 1
-  angle_z: 0
   tr: {fileID: 4730141391337062}
   cl: {fileID: 136686351671137504}
+  pre_commands: []
+  current_destination: {x: 0, y: 0, z: 0}
 --- !u!136 &136686351671137504
 CapsuleCollider:
   m_ObjectHideFlags: 1
