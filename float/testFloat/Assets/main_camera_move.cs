@@ -21,7 +21,7 @@ public class main_camera_move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		move();
+		//move();
 	}
 
 	private void move()
