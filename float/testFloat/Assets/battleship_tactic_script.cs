@@ -10,7 +10,7 @@ public class battleship_tactic_script : MonoBehaviour {
 
     public float time_step = 0.1f;
 
-	public float place_eps = 5.0f;
+	private float place_eps = 0.1f;
 
     public float speed_x = 0.0f; //change only this speed
     private float speed_y = 0.0f;
@@ -94,6 +94,9 @@ public class battleship_tactic_script : MonoBehaviour {
 				case 5:
 					setRotation(commands[com_counter][2]);
 					break;
+				case 6:
+					launch(2);
+					break;
 			}
 			com_counter++;
 			last_time = cur_time;
@@ -111,20 +114,32 @@ public class battleship_tactic_script : MonoBehaviour {
 				obj = Instantiate(rocket_prefab) as GameObject;
 				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
-				obj.transform.Translate(0, 2f, -1f);
-				obj.transform.Rotate(0, -(90), 0);
+				obj.transform.Translate(0, 2f, 0f);
+				obj.transform.Rotate(0, -(90)+5, 0);
 				//left
 				obj = Instantiate(rocket_prefab) as GameObject;
 				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
-				obj.transform.Translate(0.1f, 2f, -0.7f);
-				obj.transform.Rotate(0, -(90), 0);
+				obj.transform.Translate(0.1f, 2f, 0.3f);
+				obj.transform.Rotate(0, -(90)+5, 0);
+				//left
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
+				obj.transform.Translate(0.1f, 2f, 0.6f);
+				obj.transform.Rotate(0, -(90) + 5, 0);
 				//right
 				obj = Instantiate(rocket_prefab) as GameObject;
 				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
-				obj.transform.Translate(0.2f, 2f, -1.3f);
-				obj.transform.Rotate(0, -(90), 0);
+				obj.transform.Translate(0.2f, 2f, -0.3f);
+				obj.transform.Rotate(0, -(90)+5, 0);
+				//right
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
+				obj.transform.Translate(0.2f, 2f, -0.6f);
+				obj.transform.Rotate(0, -(90) + 5, 0);
 				break;
 			case 0:
 				//only
@@ -138,20 +153,40 @@ public class battleship_tactic_script : MonoBehaviour {
 				obj = Instantiate(rocket_prefab) as GameObject;
 				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
-				obj.transform.Translate(0, 2f, -1f);
+				obj.transform.Translate(0, 2f, 0f);
 				obj.transform.Rotate(0, -(270), 0);
 				//left
 				obj = Instantiate(rocket_prefab) as GameObject;
 				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
-				obj.transform.Translate(0.1f, 2f, -0.7f);
+				obj.transform.Translate(0.1f, 2f, 0.3f);
 				obj.transform.Rotate(0, -(270), 0);
 				//right
 				obj = Instantiate(rocket_prefab) as GameObject;
 				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
-				obj.transform.Translate(0.2f, 2f, -1.3f);
+				obj.transform.Translate(0.2f, 2f, -0.3f);
 				obj.transform.Rotate(0, -(270), 0);
+				break;
+			case 2:
+				//center
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
+				obj.transform.Translate(0, 2f, 0f);
+				obj.transform.Rotate(0, -(90) + 5, 0);
+				//left
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
+				obj.transform.Translate(0.1f, 2f, 0.3f);
+				obj.transform.Rotate(0, -(90) + 5, 0);
+				//right
+				obj = Instantiate(rocket_prefab) as GameObject;
+				obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				obj.transform.Rotate(0, tr.localRotation.eulerAngles.y + 90, 0);
+				obj.transform.Translate(0.2f, 2f, -0.3f);
+				obj.transform.Rotate(0, -(90) + 5, 0);
 				break;
 		}
         

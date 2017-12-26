@@ -6,7 +6,7 @@ public class listener : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-		if (other.GetType() == typeof(CapsuleCollider))
+		if (other.GetType() == typeof(SphereCollider))
 		{
 			Debug.Log("battleship trigger");
 			this.GetComponent<battleship_tactic_script>().hp-= rocket_movement_script.damage;
